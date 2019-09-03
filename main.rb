@@ -1,4 +1,8 @@
 require 'googlebooks'
+require "tty-prompt"
+
+prompt = TTY::Prompt.new
+
 
 puts "Welcome to Biblio Curious! What would you like to do today?"
 puts "1. Exercise my curiosity" 
@@ -20,31 +24,38 @@ end
 
 
 
-books = GoogleBooks.search(search_term, {:count => 1, :page => 9})
+books = GoogleBooks.search(search_term, {:count => 3, :page => 9})
+titles = []
+
+# puts first_book.description.class
+# puts first_book.description.length
+# puts first_book.description
+puts 
+puts "Here is what your curiosity has turned up:" 
+puts 
 
 books.each do |b|
 	puts b.title 
-	# puts b.authors
-	# puts b.description 
-	# puts "========"
-	# puts b.preview_link
-	# puts b.image_link  
-	# puts "========"
-	# puts b.description 
-	# puts b.authors 
-	# puts b.image_link(:zoom => 3)
+	titles << b
 end 
 
-
-
 puts "What would you like to do now?"
-puts "1. See another title"
-puts "2. See description of current title"
-puts "3. Save this title to your bookshelf"
+puts "1. Find out more about one of these titles"
+puts "2. Save this title to my bookshelf"
+puts "3. Search a new keyword"
+puts "4. Exit"
 
 selection = gets.chomp.to_i
 
-if selection == 2
-	puts search_result.description
-end 
+if selection == 1
+	
+
+
+
+# if selection == 2
+# 	# puts b.description
+# 	puts first_book.description
+# end
+
+
 
