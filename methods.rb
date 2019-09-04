@@ -80,26 +80,44 @@ def search
 	puts "\n"
 	puts "Title: #{book_chosen.title}"
 	puts "\n"
-	puts "Description: #{book_chosen.description}"
-		if book_chosen.description == nil 
-			puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
-		end
-	puts "\n"
-	puts "Authors: #{book_chosen.authors}"
+	puts "Author(s): #{book_chosen.authors}"
 		if book_chosen.authors == nil
 			puts "Oops there is no author information about this book! Librarians are not as fastidious as you think..."
 		end 
 	puts "\n"
+	puts "Description: #{book_chosen.description}"
+		if book_chosen.description == nil 
+		puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
+		end
+	puts "\n"
+	puts "Publication Date: #{book_chosen.published_date}"
+		if book_chosen.published_date == nil 
+		puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
+		end
+	puts "\n"
 	puts "What would you like to do now?"
 	puts "\n"
-	puts "1. Save book to bookshelf"
-	puts "2. Conduct a new search"
-	puts "3. Exit"
+	puts "1. Read a preview"
+	puts "2. See the cover"
+	puts "3. Save to my bookshelf"
+	puts "4. Conduct a new search"
+	puts "5. Exit"
 	
+	# title = book_chosen.title
+	# author = book_chosen.authors
+	# publication_date = book_chosen.published_date
+	# description = book_chosen.description
+
+	
+
 	bookshelf = []
 
 	selection = gets.chomp.to_i 
 		if selection == 1
+			puts "Click here for preview: #{book_chosen.preview_link}"
+		elsif selection == 2
+			puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
+		elsif selection == 3
 			bookshelf << book_chosen.title 
 			puts "Your bookshelf has been updated"
 			menu 
@@ -113,10 +131,10 @@ def search
 			# 	if choice == 2
 			# 		exit 
 			# 	end 
-		elsif selection == 2
+		elsif selection == 4
 			search
-		else selection == 3
-			puts "Thanks for dropping by"
+		else selection == 5
+			puts "Thanks for dropping by!"
 			exit 
 		end  
 end 
@@ -149,8 +167,7 @@ end
 
 def display_bookshelf
 	puts "Here are your saved items:"
-	puts bookshelf 
-	
+		
 end 
 
 
