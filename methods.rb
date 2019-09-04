@@ -61,6 +61,7 @@ def search
 	print "> "
 		response = gets.chomp.to_i 
 			if response == 1
+				puts "\n"
 				puts "Which title number?"
 			elsif response == 2
 				search
@@ -101,6 +102,17 @@ def search
 		if selection == 1
 			bookshelf << book_chosen.title 
 			puts "Your bookshelf has been updated"
+			menu 
+			
+			# puts "Would you like to return to the main menu?"
+			# puts "1. Yes"
+			# puts "2. No"
+			# choice = gets.chomp.to_i 
+			# 	if choice == 1
+			# 		menu
+			# 	if choice == 2
+			# 		exit 
+			# 	end 
 		elsif selection == 2
 			search
 		else selection == 3
@@ -135,11 +147,10 @@ end
 
 
 
-def display_bookshelf(bookshelf)
+def display_bookshelf
 	puts "Here are your saved items:"
-	bookshelf.each do |book|
-		puts book.title
-	end 
+	puts bookshelf 
+	
 end 
 
 
@@ -161,7 +172,7 @@ def menu
 	when 1 
 		search
 	when 2
-		display_bookshelf(bookshelf_array)
+		display_bookshelf
 	when 3 
 		exit
 	else 
