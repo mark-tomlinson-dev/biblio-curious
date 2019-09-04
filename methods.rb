@@ -1,4 +1,4 @@
-def menu
+def main_menu
 	puts "Enter an option"
 	selection = gets.chomp.to_i
 	case (selection)
@@ -19,3 +19,8 @@ continue_menu = true
 while continue_menu
  continue_menu = menu
 end
+
+
+def boo
+
+

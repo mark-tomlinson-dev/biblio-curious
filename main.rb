@@ -1,5 +1,6 @@
 require 'googlebooks'
 # require "tty-prompt"
+# require 'pry'
 
 # prompt = TTY::Prompt.new
 
@@ -30,48 +31,71 @@ end
 
 
 
-books = GoogleBooks.search(search_term, {:count => 1, :page => 9})
-titles = []
+books = GoogleBooks.search(search_term, {:count => 5, :page => 5})
 
 
-first_book = books.first
+
+puts "Here are your results:"
+books.each_with_index do |book, index|
+	puts "#{index + 1} - #{book.title}"
+end
+puts "Type your selection in:"
+puts ">"
+book_index = gets.chomp.to_i - 1
+book_chosen = books.to_a[book_index]
+
+puts "Result Below:"
+puts "Title: #{book_chosen.title}"
+puts "\n"
+puts "Description: #{book_chosen.description}"
+puts "\n"
+puts "Authors: #{book_chosen.authors}"
+
+
+
+
+
+
+
+# first_book = books.first
 
 # # puts first_book.description.class
 # # puts first_book.description.length
 # # puts first_book.description
 
 
-# books.each do |b|
-# 	titles << b
-# end
-puts 
-puts "Here is what your curiosity has turned up: #{first_book.title}" 
-puts 
-puts "What would you like to do now?"
-puts 
-puts "1. Find out more about this title"
-puts "2. Save this title to my bookshelf"
-puts "3. Search a new keyword"
-puts "4. Exit"
 
-selection = gets.chomp.to_i
 
-if selection == 1
-	puts first_book.description
-end 
-	if first_book.description == nil 
-		puts "Oops there is no further information about this book!"
-	end
 
-if selection == 2
-	bookshelf << first_book.title
-	puts "This title has been saved to your bookshelf!"
-end 
-if selection == 3
-	puts "What are you feel curious about?"
-	puts "> "
-	search_term = gets.strip 
-end 
+
+# puts "Here is what your curiosity has turned up: #{titles}" 
+
+# puts 
+# puts "What would you like to do now?"
+# puts 
+# puts "1. Find out more about this title"
+# puts "2. Save this title to my bookshelf"
+# puts "3. Search a new keyword"
+# puts "4. Exit"
+
+# selection = gets.chomp.to_i
+
+# if selection == 1
+# 	puts first_book.description
+# end 
+# 	if first_book.description == nil 
+# 		puts "Oops there is no further information about this book!"
+# 	end
+
+# if selection == 2
+# 	bookshelf << first_book.title
+# 	puts "This title has been saved to your bookshelf!"
+# end 
+# if selection == 3
+# 	puts "What are you feel curious about?"
+# 	puts "> "
+# 	search_term = gets.strip 
+# end 
 
 
 
