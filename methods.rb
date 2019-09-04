@@ -58,6 +58,9 @@ def search
 	puts "\n"
 	book_index = gets.chomp.to_i - 1
 	book_chosen = books.to_a[book_index]
+		if book_chosen != 0..5
+			puts "This is not a valid selection. Please enter a number from 1 to 5."
+		end 
 	puts "\n"
 	puts "Title: #{book_chosen.title}"
 	puts "\n"
