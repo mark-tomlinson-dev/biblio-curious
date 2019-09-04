@@ -78,6 +78,8 @@ def search
 		# 	puts "This is not a valid selection. Please enter a number from 1 to 5."
 		# end 
 	puts "\n"
+	puts "Here is a bit of information to whet your appetite:"
+	puts "\n"
 	puts "Title: #{book_chosen.title}"
 	puts "\n"
 	puts "Author(s): #{book_chosen.authors}"
@@ -114,9 +116,13 @@ def search
 
 	selection = gets.chomp.to_i 
 		if selection == 1
+			puts "\n"
 			puts "Click here for preview: #{book_chosen.preview_link}"
+			menu 
 		elsif selection == 2
+			puts "\n"
 			puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
+			menu
 		elsif selection == 3
 			bookshelf << book_chosen.title 
 			puts "Your bookshelf has been updated"
