@@ -84,17 +84,17 @@ def search
 	puts "\n"
 	puts "Author(s): #{book_chosen.authors}"
 		if book_chosen.authors == nil
-			puts "Oops there is no author information about this book! Librarians are not as fastidious as you think..."
+			puts "Oops there is no author information about this book!"
 		end 
 	puts "\n"
 	puts "Description: #{book_chosen.description}"
 		if book_chosen.description == nil 
-		puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
+		puts "Oops there is no further information about this book!"
 		end
 	puts "\n"
 	puts "Publication Date: #{book_chosen.published_date}"
 		if book_chosen.published_date == nil 
-		puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
+		puts "Oops there is no further information about this book!"
 		end
 	puts "\n"
 	puts "What would you like to do now?"
