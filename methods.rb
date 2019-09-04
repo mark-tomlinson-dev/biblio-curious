@@ -52,15 +52,30 @@ def search
 		end
 
 	puts "\n"
-	puts "Please select a title for further inspection:"
+	puts "Do any of these titles interest you?"
+	puts "\n"
+	puts "1. Yes"
+	puts "2. No, I want to search again"
+	puts "3. Take me back to the main menu"
+	puts "\n"
+	print "> "
+		response = gets.chomp.to_i 
+			if response == 1
+				puts "Which title number?"
+			elsif response == 2
+				search
+			else response == 3
+				menu
+			end 
+
 	puts "\n"
 	print "> "
 	puts "\n"
 	book_index = gets.chomp.to_i - 1
 	book_chosen = books.to_a[book_index]
-		if book_chosen != 0..5
-			puts "This is not a valid selection. Please enter a number from 1 to 5."
-		end 
+		# if book_chosen != 0..5
+		# 	puts "This is not a valid selection. Please enter a number from 1 to 5."
+		# end 
 	puts "\n"
 	puts "Title: #{book_chosen.title}"
 	puts "\n"
@@ -80,15 +95,18 @@ def search
 	puts "2. Conduct a new search"
 	puts "3. Exit"
 	
+	bookshelf = []
+
 	selection = gets.chomp.to_i 
 		if selection == 1
-			bookshelf << book_chosen
+			bookshelf << book_chosen.title 
+			puts "Your bookshelf has been updated"
 		elsif selection == 2
 			search
 		else selection == 3
+			puts "Thanks for dropping by"
 			exit 
 		end  
-	p bookshelf 
 end 
 
 
@@ -117,10 +135,10 @@ end
 
 
 
-def display_bookshelf(bookshelf_array)
+def display_bookshelf(bookshelf)
 	puts "Here are your saved items:"
-	bookshelf_array.each_with_index do |book, index|
-		puts "#{index + 1} - #{book.title}"
+	bookshelf.each do |book|
+		puts book.title
 	end 
 end 
 
