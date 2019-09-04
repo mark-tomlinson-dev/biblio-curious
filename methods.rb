@@ -32,22 +32,40 @@
 #  continue_menu = main_menu
 # end
 
+def search
+	puts "What are you feeling curious about?"
+	print "> "
+	search_term = gets.strip
+		if search_term == nil
+			puts "That is not a valid entry. Please try again"
+		end
+end 
+
 
 
 def menu
-	puts "Pick a number between 1 and 3"
-	puts "1. Prints hi"
-	puts "2. Runs method again"
-	puts "3. Exits the file"
+	puts "\n"
+	puts "Welcome to Biblio Curious! What would you like to do today?"
+	puts "\n"
+	puts "1. Exercise my curiosity" 
+	puts "2. View my saved curiosities"
+	puts "3. Exit"
 	print "> "
-	input = gets.chomp.to_i
-	case input 
+	selection = gets.chomp.to_i
+	case selection 
 	when 1 
-		puts "hi"
-		menu
+		search 
 	when 2
-		menu
+		display_bookshelf
 	when 3 
 		exit
 	end  
 end 
+
+menu 
+
+
+
+
+
+
