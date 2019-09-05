@@ -108,10 +108,10 @@ def search(bookshelf)
 		selection = gets.chomp.to_i 
 		if selection == 1
 			puts "\n"
-			puts "Click here for preview: #{book_chosen.preview_link}"
+			puts "Click here for preview (command + double click): #{book_chosen.preview_link}"
 		elsif selection == 2
 			puts "\n"
-			puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
+			puts "Click here to view cover (command + double click): #{book_chosen.image_link(:zoom => 4)}"
 		elsif selection == 3
 			add_to_bookshelf(book_chosen.title, bookshelf)
 			# bookshelf << book_chosen.title 
