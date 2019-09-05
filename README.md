@@ -15,7 +15,9 @@ Open minds etc.
 ## User Interaction and Experience
 
 
-## Features / Functionality
+
+
+## Features
 
 
 Based on user input, Biblio Curious has a search feature that returns a list of five book titles from the Google Books database. The default search returns results by relevance. It filters out books that do not include a book preview option.
@@ -71,7 +73,7 @@ Tasks to be completed:
 
 - [x] Install GoogleBooks gem from the terminal 
 - [x] Discover its capabilities and how to use them
-- [x] 'Require' its use in run file
+- [x] 'Require' its use in the run file (main.rb)
 - [x] Follow basic usage guide in the gem's documentation
 - [x] Set search parameters 
 
@@ -79,12 +81,26 @@ Tasks to be completed:
 
 The GoogleBooks gem will also be used to implement other aspects of the search feature. Biblio Curious aims to return a limited number of search results. It also wants to provide users with a link to an image of the cover and to a link to the full text or partial text (depending on availability). The gem will be the perfect tool as it allows developers to specify how many results the search should yield. It also allows developers to filter results by whether or not a preview of the book is available. Biblio Curious can take advantage of that to ensure there will always be access to a text preview and cover image (the former necessitating the latter).
 
-- [x] 
-- [x]
-- [ ]
-- [ ]
+Tasks to be completed:
+
+- [x] Consult the gem's documentation to ascertain correct methods and syntax for requisite code
+- [x] Write and test code
+- [x] Introduce code into the control flow
+- [x] Refactor code as required
+- [x] Provide user instructions for accessing url links from terminal or console
 
 ### Implementing the Bookshelf Feature
+
+Another important feature of Biblio Curious is its bookshelf feature. Users will be able to store any book they like there in an accessible, ordered list. They will be able to move back and forth between the bookshelf and the search function. At the end of a single sessions, truly curious users will have a truly curious list they can consult. In order to implement such feature, Biblio Curious proposes to write an empty array `bookshelf = []`, declare it in global scope and pass it in as an argument to the requisite methods. Biblio Curious will then write code such that when users select the appropriate menu option, the title of the chosen book `chosen_book.title` will be pushed into the bookshelf array `bookshelf << chosen_book.title`. Code may be refactored as required.
+
+Tasks to be completed:
+
+- [x] Create empty array and declare it in global scope
+- [x] When user has chosen a pariticular book, provide them with the option of saving it to their bookshelf
+- [x] Push chosen book into bookshelf array
+- [x] Design and code bookshelf menu options
+- [x] Test and debut usability 
+
 
 
 
