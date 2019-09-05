@@ -1,4 +1,3 @@
-
 def google_books_api_search
 	puts "\n"
 	puts "What are you feeling curious about?"
@@ -8,12 +7,18 @@ def google_books_api_search
 	if search_term == nil
 		puts "That is not a valid entry. Please try again"
 	end
-
-	books = GoogleBooks.search(search_term, {:count => 5, :page => 1, :filter => 'partial'})
-	puts "\n"
-	puts "Here is what your curiosity turned up:"
-	puts "\n"
-	return books
+	begin
+		books = GoogleBooks.search(search_term, {:count => 5, :page => 1, :filter => 'partial'})
+		if books.to_a.length == 0
+			raise 
+		end 
+		puts "\n"
+		puts "Here is what your curiosity turned up:"
+		puts "\n"
+		return books
+	rescue 
+		google_books_api_search
+	end 
 end 
 
 def display_google_books(books)
@@ -92,49 +97,52 @@ def search(bookshelf)
 	end
 
 	# puts out a menu for what we want to do next
-
-
-	selection = gets.chomp.to_i 
-	if selection == 1
-		puts "\n"
-		puts "Click here for preview: #{book_chosen.preview_link}"
+	submenu_running = true
+	while submenu_running
 		what_would_you_like_to_do_next
-	elsif selection == 2
-		puts "\n"
-		puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
-		what_would_you_like_to_do_next
-
-	elsif selection == 3
-		bookshelf << book_chosen.title 
-		puts "\n"
-		puts "Your bookshelf has been updated!"
-		puts "\n"
-		sleep 5
-		search_again_or_go_back_to_menu
-		# menu(bookshelf) 
+		selection = gets.chomp.to_i 
+		if selection == 1
+			puts "\n"
+			puts "Click here for preview: #{book_chosen.preview_link}"
+		elsif selection == 2
+			puts "\n"
+			puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
+		elsif selection == 3
+			bookshelf << book_chosen.title 
+			puts "\n"
+			puts "Your bookshelf has been updated!"
+			puts "\n"
+			sleep 5
 		elsif selection == 4
 			search(bookshelf)
 		else selection == 5
-			menu(bookshelf)
-		end  
-end 
-
-def display_bookshelf(bookshelf)
-		puts "Here are your saved items: "
-		bookshelf.each_with_index do |book, index|
-		puts "#{index + 1}) #{book}"
-	end
-	sleep 3 
+			submenu_running = false
+			sleep 3 
+		end 
+	end 
 	menu(bookshelf)
 end 
+
+	def display_bookshelf(bookshelf)
+		if bookshelf.length > 0
+			puts "Here are your saved items: "
+			bookshelf.each_with_index do |book, index|
+				puts "#{index + 1}) #{book}"
+			end
+		else 
+			puts "Your bookshelf is currently empty"
+		end  
+		sleep 3 
+		menu(bookshelf)
 end 
+
 # def welcome_message
 # end 
 
 
 def menu(bookshelf)
 	puts "\n"
-	puts "Welcome to Biblio Curious! What would you like to do today?".colorize(:blue)
+	puts "Welcome to Biblio Curious! What would you like to do today?"
 	puts "\n"
 	puts "1. Exercise my curiosity" 
 	puts "2. View my saved curiosities"
@@ -149,7 +157,7 @@ def menu(bookshelf)
 	when 2
 		display_bookshelf(bookshelf)
 	when 3
-		puts "Thanks for dropping by. See you again soon" 
+		puts "Thanks for dropping by. See you again soon!" 
 		exit
 	else 
 		puts "\n"
@@ -158,11 +166,4 @@ def menu(bookshelf)
     sleep 2
 		menu(bookshelf)
 	end  
-end 
-
-
-
-
-
-
-
+end
