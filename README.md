@@ -1,4 +1,7 @@
-# Purpose
+# Software Development Plan
+
+
+## Purpose
 
 The purpose of Biblio Curious is to introduce chance into a world that often prefers order and control. It is to stimulate user's natural curiosity - allow a brief insight into just how much is possible in the world / the diversity of the world - rather than tailor the data they receive to previous searches/books read/movies watched.
 
@@ -11,14 +14,38 @@ A book on cheese making from the 19th century, complete with images.
 Open minds etc.
 
 
+## Scope
+
+
+
+
+
 
 ## User Interaction and Experience
+
+Users interact with Biblio Curious via a series of menus and menu options. Textual user prompts aim to provide clear and cheerful instructions. Particular attention has been paid to tone. Users are to feel encouraged and inspired to exercise their curiosity and, above all, to view the opportunity to search as an opportunity to broaden their horizons rather than return merely practical results (though that, of course, is fine too!).
+
+Error messages in the form of 'putsed strings' have been incorporated into the program, should something go wrong. If the program receives unexpected user input (e.g. a number outside the range of menu options, or gibberish) it will print "That doesn't seem to be a valid selection." If the search feature receives a string of gibberish, a raise and rescue is initialised, simply asking the user to enter a new search. 
+
+From the opening menu, the user will be aware of three options: search, view bookshelf, and exit. Inside the search feature, the user will progressively discover additional features (i.e. read the book and view the cover). This has been designed specifically to be in keeping with the themes of curiosity and surprise.
+
+The 'what would you like to do next menu' is deliberately run on a loop to give the impression of limitless enquiry to the user.
+
+Finally, the user is to be thanked for taking the time to experience this curious little application. 
+
+
+
+Include planning and brainstorming pictures here?
+
+
+
+
+
 
 
 
 
 ## Features
-
 
 Based on user input, Biblio Curious has a search feature that returns a list of five book titles from the Google Books database. The default search returns results by relevance. It filters out books that do not include a book preview option.
 
