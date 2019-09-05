@@ -70,6 +70,7 @@ def add_to_bookshelf(book_title, book_shelf)
 	book_shelf << book_title 
 end 	
 
+
 def search(bookshelf)
 	# this method searches the google books api
 	books = google_books_api_search
