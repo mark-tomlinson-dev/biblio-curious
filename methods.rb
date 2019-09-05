@@ -8,13 +8,12 @@ def google_books_api_search
 	if search_term == nil
 		puts "That is not a valid entry. Please try again"
 	end
-	
+
 	books = GoogleBooks.search(search_term, {:count => 5, :page => 1, :filter => 'partial'})
 	puts "\n"
 	puts "Here is what your curiosity turned up:"
 	puts "\n"
 	return books
-	sleep 3
 end 
 
 def display_google_books(books)
@@ -32,6 +31,7 @@ def choose_a_book(books)
 end 
 
 def search_again_or_go_back_to_menu
+	sleep 2
 	puts "\n"
 	puts "Do any of these titles interest you?"
 	puts "\n"
@@ -47,7 +47,7 @@ def search_again_or_go_back_to_menu
 	elsif response == 2
 		search
 	else response == 3
-		menu(bookshelf)
+		menu
 	end 
 end 
 
@@ -60,7 +60,7 @@ def search(bookshelf)
 	search_again_or_go_back_to_menu
 	# choose a book 
 	book_chosen = choose_a_book(books)
-	sleep 3
+	sleep 2
 	puts "\n"
 	puts "Here is a bit of information about it:"
 	puts "\n"
@@ -68,17 +68,17 @@ def search(bookshelf)
 	puts "\n"
 	puts "Author(s): #{book_chosen.authors}"
 	if book_chosen.authors == nil
-		puts "Oops there is no author information about this book!"
+		puts "Oops there is no author information available for this book!"
 	end 
 	puts "\n"
 	puts "Description: #{book_chosen.description}"
 	if book_chosen.description == nil 
-		puts "Oops there is no further information about this book!"
+		puts "Oops there is no description available for this book!"
 	end
 	puts "\n"
 	puts "Publication Date: #{book_chosen.published_date}"
 	if book_chosen.published_date == nil 
-		puts "Oops there is no further information about this book!"
+		puts "Oops there is no publication date available for this book!"
 	end
 	puts "\n"
 	puts "What would you like to do now?"
@@ -112,7 +112,8 @@ def search(bookshelf)
 		else selection == 5
 			puts "Thanks for dropping by!"
 			exit 
-		end  
+		end
+	sleep 3  
 end 
 
 def what_would_you_like_to_do_next
