@@ -66,6 +66,10 @@ def search_again_or_go_back_to_menu(bookshelf)
 	end 
 end 
 
+def add_to_bookshelf(book_title, book_shelf)
+	book_shelf << book_title 
+end 	
+
 def search(bookshelf)
 	# this method searches the google books api
 	books = google_books_api_search
@@ -108,7 +112,8 @@ def search(bookshelf)
 			puts "\n"
 			puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
 		elsif selection == 3
-			bookshelf << book_chosen.title 
+			add_to_bookshelf(book_chosen.title, bookshelf)
+			# bookshelf << book_chosen.title 
 			puts "\n"
 			puts "Your bookshelf has been updated!"
 			puts "\n"
