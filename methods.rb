@@ -1,37 +1,3 @@
-# def main_menu
-# 	puts "Welcome to Biblio Curious! What would you like to do today?"
-# 	puts "\n"
-# 	puts "1. Exercise my curiosity" 
-# 	puts "2. View my saved curiosities"
-# 	puts "3. Exit"
-# 	print "> "
-# 	selection = gets.chomp.to_i
-	
-# 	case (selection)
-# 	when 1
-# 		puts "What are you feeling curious about?"
-# 		print "> "
-# 		search_term = gets.strip
-# 			if search_term == nil
-# 				puts "That is not a valid entry"
-# 			end 
-# 		true
-# 	when 2
-# 		puts "Here are your saved books: #{bookshelf}"
-# 		true
-# 	when 10
-# 		puts "Thanks for stopping by"
-# 		# exit
-# 		false
-# 	end
-# end
-
-# continue_menu = true
-
-# while continue_menu
-#  continue_menu = main_menu
-# end
-
 
 def google_books_api_search
 	puts "\n"
@@ -48,9 +14,10 @@ def google_books_api_search
 	puts "Here is what your curiosity turned up:"
 	puts "\n"
 	return books
+	sleep 3
 end 
 
-def display_google_books 
+def display_google_books(books)
 	books.each_with_index do |book, index|
 		puts "#{index + 1} - #{book.title}"
 	end
@@ -88,15 +55,14 @@ def search(bookshelf)
 	# this method searches the google books api
 	books = google_books_api_search
 	# displaying the list of 5 books, no return
-	display_google_books
+	display_google_books(books)
 	# menu for searching again or choosing to pick a book
 	search_again_or_go_back_to_menu
 	# choose a book 
 	book_chosen = choose_a_book(books)
-
-	
+	sleep 3
 	puts "\n"
-	puts "Here is a bit of information to whet your appetite:"
+	puts "Here is a bit of information about it:"
 	puts "\n"
 	puts "Title: #{book_chosen.title}"
 	puts "\n"
@@ -141,16 +107,6 @@ def search(bookshelf)
 		bookshelf << book_chosen.title 
 		puts "Your bookshelf has been updated"
 		menu(bookshelf) 
-			
-			# puts "Would you like to return to the main menu?"
-			# puts "1. Yes"
-			# puts "2. No"
-			# choice = gets.chomp.to_i 
-			# 	if choice == 1
-			# 		menu
-			# 	if choice == 2
-			# 		exit 
-			# 	end 
 		elsif selection == 4
 			search
 		else selection == 5
@@ -159,49 +115,33 @@ def search(bookshelf)
 		end  
 end 
 
-
-
-
-
-
-def sub_menu 
+def what_would_you_like_to_do_next
 	puts "What would you like to do now?"
-	puts ""
-	book_index = gets.chomp.to_i - 1
-	book_chosen = books.to_a[book_index]
-	puts "\n"
-	puts "Title: #{book_chosen.title}"
-	puts "\n"
-	puts "Description: #{book_chosen.description}"
-		if book_chosen.description == nil 
-			puts "Oops there is no further information about this book! Librarians are not as fastidious as you think..."
-		end
-	puts "\n"
-	puts "Authors: #{book_chosen.authors}"
-		if book_chosen.authors == nil
-			puts "Oops there is no author information about this book! Librarians are not as fastidious as you think..."
-		end 
+		puts "\n"
+		puts "1. Read a preview"
+		puts "2. See the cover"
+		puts "3. Save to my bookshelf"
+		puts "4. Conduct a new search"
+		puts "5. Exit"
 end 
 
-
-
 def display_bookshelf(bookshelf)
-	puts "Here are your saved items:"
-	bookshelf.each_with_index do |book, index|
+		puts "Here are your saved items: "
+		bookshelf.each_with_index do |book, index|
 		puts "#{index + 1}) #{book}"
 	end
-	sleep 5 
+	sleep 3 
 	menu(bookshelf)
 end 
 
-
-	
-
-
-def menu(bookshelf)
+def welcome_message
 	puts "\n"
 	puts "Welcome to Biblio Curious! What would you like to do today?"
 	puts "\n"
+end 
+
+
+def menu(bookshelf)
 	puts "1. Exercise my curiosity" 
 	puts "2. View my saved curiosities"
 	puts "3. Exit"
@@ -217,10 +157,13 @@ def menu(bookshelf)
 	when 3 
 		exit
 	else 
+		puts "\n"
 		puts "You have made an invalid selection. Please enter a number from 1 to 3."
+		puts "\n"
+		sleep 2
+		menu(bookshelf)
 	end  
 end 
-
 
 
 
