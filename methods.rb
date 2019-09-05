@@ -134,14 +134,14 @@ def display_bookshelf(bookshelf)
 	menu(bookshelf)
 end 
 
-def welcome_message
-	puts "\n"
-	puts "Welcome to Biblio Curious! What would you like to do today?"
-	puts "\n"
-end 
+# def welcome_message
+# end 
 
 
 def menu(bookshelf)
+	puts "\n"
+	puts "Welcome to Biblio Curious! What would you like to do today?"
+	puts "\n"
 	puts "1. Exercise my curiosity" 
 	puts "2. View my saved curiosities"
 	puts "3. Exit"
@@ -158,9 +158,9 @@ def menu(bookshelf)
 		exit
 	else 
 		puts "\n"
-		puts "You have made an invalid selection. Please enter a number from 1 to 3."
+		puts "That doesn't seem to be a valid selection"
 		puts "\n"
-		sleep 2
+    sleep 2
 		menu(bookshelf)
 	end  
 end 
