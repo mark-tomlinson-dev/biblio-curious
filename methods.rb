@@ -22,6 +22,16 @@ def display_google_books(books)
 	end
 end 
 
+def what_would_you_like_to_do_next
+	puts "What would you like to do now?"
+	puts "\n"
+	puts "1. Read a preview"
+	puts "2. See the cover"
+	puts "3. Save to my bookshelf"
+	puts "4. Conduct a new search"
+	puts "5. Take me back to the main menu"
+end 
+
 def choose_a_book(books)
 	puts "\n"
 	print "> "
@@ -30,7 +40,7 @@ def choose_a_book(books)
 	return books.to_a[book_index]
 end 
 
-def search_again_or_go_back_to_menu
+def search_again_or_go_back_to_menu(bookshelf)
 	sleep 2
 	puts "\n"
 	puts "Do any of these titles interest you?"
@@ -45,9 +55,9 @@ def search_again_or_go_back_to_menu
 		puts "\n"
 		puts "Which title number?"
 	elsif response == 2
-		search
+		search(bookshelf)
 	else response == 3
-		menu
+		menu(bookshelf)
 	end 
 end 
 
@@ -57,7 +67,7 @@ def search(bookshelf)
 	# displaying the list of 5 books, no return
 	display_google_books(books)
 	# menu for searching again or choosing to pick a book
-	search_again_or_go_back_to_menu
+	search_again_or_go_back_to_menu(bookshelf)
 	# choose a book 
 	book_chosen = choose_a_book(books)
 	sleep 2
@@ -80,50 +90,33 @@ def search(bookshelf)
 	if book_chosen.published_date == nil 
 		puts "Oops there is no publication date available for this book!"
 	end
-	puts "\n"
-	puts "What would you like to do now?"
-	puts "\n"
-	puts "1. Read a preview"
-	puts "2. See the cover"
-	puts "3. Save to my bookshelf"
-	puts "4. Conduct a new search"
-	puts "5. Exit"
-	
-	# title = book_chosen.title
-	# author = book_chosen.authors
-	# publication_date = book_chosen.published_date
-	# description = book_chosen.description
+
+	# puts out a menu for what we want to do next
+
 
 	selection = gets.chomp.to_i 
 	if selection == 1
 		puts "\n"
 		puts "Click here for preview: #{book_chosen.preview_link}"
-		menu(bookshelf)
+		what_would_you_like_to_do_next
 	elsif selection == 2
 		puts "\n"
 		puts "Click here to view cover: #{book_chosen.image_link(:zoom => 4)}"
-		menu(bookshelf)
+		what_would_you_like_to_do_next
+
 	elsif selection == 3
 		bookshelf << book_chosen.title 
-		puts "Your bookshelf has been updated"
-		menu(bookshelf) 
-		elsif selection == 4
-			search
-		else selection == 5
-			puts "Thanks for dropping by!"
-			exit 
-		end
-	sleep 3  
-end 
-
-def what_would_you_like_to_do_next
-	puts "What would you like to do now?"
 		puts "\n"
-		puts "1. Read a preview"
-		puts "2. See the cover"
-		puts "3. Save to my bookshelf"
-		puts "4. Conduct a new search"
-		puts "5. Exit"
+		puts "Your bookshelf has been updated!"
+		puts "\n"
+		sleep 5
+		search_again_or_go_back_to_menu
+		# menu(bookshelf) 
+		elsif selection == 4
+			search(bookshelf)
+		else selection == 5
+			menu(bookshelf)
+		end  
 end 
 
 def display_bookshelf(bookshelf)
@@ -134,14 +127,14 @@ def display_bookshelf(bookshelf)
 	sleep 3 
 	menu(bookshelf)
 end 
-
+end 
 # def welcome_message
 # end 
 
 
 def menu(bookshelf)
 	puts "\n"
-	puts "Welcome to Biblio Curious! What would you like to do today?"
+	puts "Welcome to Biblio Curious! What would you like to do today?".colorize(:blue)
 	puts "\n"
 	puts "1. Exercise my curiosity" 
 	puts "2. View my saved curiosities"
@@ -155,7 +148,8 @@ def menu(bookshelf)
 		search(bookshelf)
 	when 2
 		display_bookshelf(bookshelf)
-	when 3 
+	when 3
+		puts "Thanks for dropping by. See you again soon" 
 		exit
 	else 
 		puts "\n"
