@@ -1,6 +1,3 @@
-
-
-
 def google_books_api_search
 	puts "\n"
 	puts "What are you feeling curious about?"
@@ -78,15 +75,14 @@ def add_to_bookshelf(book_title, book_shelf)
 	book_shelf << book_title 
 end 	
 
-
 def search(bookshelf)
-	# this method searches the google books api
+	# This method searches the google books api
 	books = google_books_api_search
-	# displaying the list of 5 books, no return
+	# Displaying the list of 5 books, no return
 	display_google_books(books)
-	# menu for searching again or choosing to pick a book
+	# Menu for searching again or choosing to pick a book
 	search_again_or_go_back_to_menu(bookshelf)
-	# choose a book 
+	# Choose a book 
 	book_chosen = choose_a_book(books)
 	sleep 2 
 	puts "\n"
