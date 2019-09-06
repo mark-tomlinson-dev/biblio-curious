@@ -1,11 +1,7 @@
-# allows you to execute ./build.sh without the bash keyword
-chmod +x ./build.sh
-# copy across files to distribution directory
 mkdir dist
-cp ./app.rb ./dist
-cp ./contacts.rb ./dist
-cp ./test.rb ./dist
+cp ./main.rb ./dist
+cp ./methods.rb ./dist
 # install all gems
 gem install googlebooks
 gem install colorize 
-gem install 
+gem install tty-font
