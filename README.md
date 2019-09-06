@@ -1,3 +1,12 @@
+# Terminal App : Biblio Curious
+
+A book search, preview, and save app written in Ruby.
+
+## Contributor
+
+https://github.com/mark-tomlinson-dev
+
+
 ## Purpose
 
 The purpose of Biblio Curious is to promote chance and discovery in a world of increasing order and control. Humans have never had so much information at their fingertips and yet our technologies are often used to reinforce our current preferences rather than broaden our horizons. Biblio Curious aims to flip the script by inviting users to exercise and stimulate their natural, though perhaps dormant, curiosity about anything and everything.     
@@ -8,8 +17,9 @@ The application is for both those who are curious and those who have forgotten h
 
 Currently the user interface is available in English only, though it is entirely possible to search in any language and return results in those languages.
 
-![french-search](./assets/biblio-curious-french-search.png)
+Search results in French:
 
+![french-search](./assets/biblio-curious-french-search.png)
 
 
 ## User Interaction and Experience
@@ -22,7 +32,7 @@ From the opening menu, the user will be aware of three options: search, view boo
 
 The 'what would you like to do next menu' is deliberately run on a loop to give the impression of limitless enquiry to the user.
 
-Finally, the user is to be thanked for taking the time to experience this curious little application. 
+Finally, upon exit, the user is thanked for taking the time to experience this curious little application. 
 
 
 ## Features
@@ -42,13 +52,13 @@ With their curiosity satisfied, users are able to exit the program from the main
 
 ## Instructions for Use
 
-1. Open Terminal or your preferred console
+1. Open Terminal or your preferred console.
 
-2. Make sure you have Ruby installed on your machine
+2. Make sure you have Ruby installed on your machine.
 
-2. Clone terminal-app repository
+2. Clone the terminal-app repository.
 
-3. cd into the directory you've cloned
+3. cd into the appropriate directory.
 
 4. To install the program, enter:
 
@@ -59,7 +69,6 @@ This will install the following Ruby gems:
 - tty-font
 - googlebooks
 - colorize
-
 
 5. To initialise the program, enter:
 
@@ -91,7 +100,7 @@ Tasks completed:
 
 ### Implementing the Book Preview Feature
 
-The GoogleBooks gem was also used to implement other important features within the search feature. Biblio Curious aims to return a limited number of search results. It also wants to provide users with a link to an image of the cover and to a link to the full text or partial text (depending on availability). The gem is the perfect tool as it allows developers to specify how many results the search should yield. It also allows developers to filter results by whether or not a preview of the book is available.Biblio Curious can take advantage of that to ensure there will always be access to a text preview and cover image (the former necessitating the latter).
+The GoogleBooks gem was also used to implement other important features within the search feature. Biblio Curious returns a limited number of search results. It also provides users with a link to an image of the cover and to a link to the full text or partial text (depending on availability). The gem is the perfect tool as it allows developers to specify how many results the search should yield. It also allows developers to filter results by whether or not a preview of the book is available. Biblio Curious takes advantage of that to ensure there will always be access to a text preview and cover image (the former necessitating the latter).
 
 `books = GoogleBooks.search(search_term, {:count => 5, :page => 1, :filter => 'partial'})`
 
@@ -139,7 +148,7 @@ Later, note-taking switched to pen and paper as I explored the functionality of 
 ![](./assets/biblio-curious-development-process.png)
 
 
-## Task Management
+### Task Management
 
 A Trello board was utilised to manage the project. Tasks were prioritised (most important first), outlined, and broken down into component parts. All items began in 'backlog', moved to 'doing', then, finally, to 'done'. This helped keep the project focused and on track.
 
@@ -183,5 +192,7 @@ Getting there!
 - Improving design by implementing TTY-Prompt gem.
 
 - Improve error handling.
+
+- Randomise the search so that a single search term entered on two different occassions will return two different lists.
 
 ![](./assets/biblio-curious-exit-message.png)
