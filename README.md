@@ -183,3 +183,5 @@ Getting there!
 - Improving design by implementing TTY-Prompt gem.
 
 - Improve error handling.
+
+![](./assets/biblio-curious-exit-message.png)
