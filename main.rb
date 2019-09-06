@@ -1,10 +1,12 @@
-require 'googlebooks'
 require_relative 'methods'
-require 'tty-prompt'
-require 'tty-spinner'
+
+require 'googlebooks'
 require 'colorize'
-prompt = TTY::Prompt.new
-spinner = TTY::Spinner.new
+require 'tty-font'
+require 'tty-prompt'
+
+# Uses TTY Font gem for logo
+FONT = TTY::Font.new(:standard)
 
 # this is the global data structure, that we pass to all other methods that require it
 bookshelf = []
