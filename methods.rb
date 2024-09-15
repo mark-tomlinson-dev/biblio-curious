@@ -136,17 +136,17 @@ def search(bookshelf)
 	menu(bookshelf)
 end 
 
-	def display_bookshelf(bookshelf)
-		if bookshelf.length > 0
-			puts "Here are your saved items: "
+def display_bookshelf(bookshelf)
+	if bookshelf.length > 0
+		puts "Here are your saved items: "
 			bookshelf.each_with_index do |book, index|
 				puts "#{index + 1}) #{book}"
 			end
-		else 
-			puts "Your bookshelf is currently empty"
-		end  
-		sleep 2 
-		menu(bookshelf)
+	else 
+		puts "Your bookshelf is currently empty"
+	end  
+	sleep 2 
+	menu(bookshelf)
 end 
 
 def menu(bookshelf)
